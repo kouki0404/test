@@ -51,13 +51,13 @@ if col6.button(str(sisoku[5])):
     st.session_state.siki += str(sisoku[5])
     count += 1
 if col1.button(f"{str(st.session_state.a)}"):
-    if number_a == True:
-        st.error(f"同じ数字を使うことはできません")
-    else:
+    if number_a:
         st.session_state.siki += str(st.session_state.a)
-        number_a = True
+        number_a = False
         if st.session_state.choice_sisoku == "＋":
             solve += st.session_state.a
+    else:
+        st.error(f"同じ数字を使うことはできません")
 
 col2.button(f"{str(st.session_state.b)} ")
 col3.button(f"{str(st.session_state.c)}  ")

@@ -27,10 +27,12 @@ if 'right' not in st.session_state:
     st.session_state.right = 0
 solve = 0
 count = 0
-number_a = True
-number_b = True
-number_c = True
-number_d = True
+if 'number_a' not in st.session_state:
+    st.session_state.number_a = True
+if 'number_b' not in st.session_state:
+    st.session_state.number_b = True
+number_c = 0
+number_d = 0
 if col1.button(str(sisoku[0])):
     st.session_state.siki += str(sisoku[0])
     count += 1
@@ -51,9 +53,9 @@ if col6.button(str(sisoku[5])):
     st.session_state.siki += str(sisoku[5])
     count += 1
 if col1.button(f"{str(st.session_state.a)}"):
-    if number_a:
+    if st.session_state.number_a:
         st.session_state.siki += str(st.session_state.a)
-        number_a = False
+        st.session_state.number_a = False
         if st.session_state.choice_sisoku == "＋":
             solve += st.session_state.a
     else:

@@ -90,6 +90,7 @@ if st.button("次の問題へ"):
         st.session_state.b = random.randint(1,9)
         st.session_state.c = random.randint(1,9)
         st.session_state.d = random.randint(1,9)
+        st.session_state.number_a = True
         st.session_state.siki = ""
         answer = 0
         solve = 0

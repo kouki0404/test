@@ -27,10 +27,10 @@ if 'right' not in st.session_state:
     st.session_state.right = 0
 solve = 0
 count = 0
-number_a = False
-number_b = False
-number_c = False
-number_d = False
+number_a = True
+number_b = True
+number_c = True
+number_d = True
 if col1.button(str(sisoku[0])):
     st.session_state.siki += str(sisoku[0])
     count += 1

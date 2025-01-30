@@ -53,7 +53,7 @@ elif st.session_state.a == st.session_state.c :
     col1.button(f"{str(st.session_state.a)}")
     col2.button(f"{str(st.session_state.b)} ")
     col3.button(f"{str(st.session_state.c)} ")
-    col4.button(f"{str(st.session_state.d)}")
+    col4.button(f"{str(st.session_state.d)}  ")
 elif st.session_state.a == st.session_state.d:
     col1.button(f"{str(st.session_state.a)}")
     col2.button(f"{str(st.session_state.b)}")

@@ -17,12 +17,28 @@ if st.session_state.a == st.session_state.b and st.session_state.c == st.session
 col1,col2,col3,col4,col5,col6,col7,col8 = st.columns(8)
 sisoku = ["＋","－","×","÷","（","）"]
 answer = []
-col1.button(str(sisoku[0]))
-col2.button(str(sisoku[1]))
-col3.button(str(sisoku[2]))
-col4.button(str(sisoku[3]))
-col5.button(str(sisoku[4]))
-col6.button(str(sisoku[5]))
+if 'siki' not in st.session_state:
+    st.session_state.siki = ""
+choice = ""
+solve = 0
+if col1.button(str(sisoku[0])):
+    st.session_state.siki += str(sisoku[0])
+    choice = str(sisoku[0])
+if col2.button(str(sisoku[1])):
+    st.session_state.siki += str(sisoku[1])
+    choice = str(sisoku[1])
+if col3.button(str(sisoku[2])):
+    st.session_state.siki += str(sisoku[2])
+    choice = str(sisoku[2])
+if col4.button(str(sisoku[3])):
+    st.session_state.siki += str(sisoku[3])
+    choice = str(sisoku[3])
+if col5.button(str(sisoku[4])):
+    st.session_state.siki += str(sisoku[4])
+    choice = str(sisoku[4])
+if col6.button(str(sisoku[5])):
+    st.session_state.siki += str(sisoku[5])
+    choice = str(sisoku[5])
 if st.session_state.a == st.session_state.b:
     col1.button(f"{str(st.session_state.a)}")
     col2.button(f"{str(st.session_state.b)} ")
@@ -69,7 +85,9 @@ else:
     col2.button(f"{str(st.session_state.b)}")
     col3.button(f"{str(st.session_state.c)}")
     col4.button(f"{str(st.session_state.d)}")
-
+if col1.button(f"一文字消す"):
+    st.session_state.siki = st.session_state.siki[:-1]
+st.write(f"{st.session_state.siki}={solve}")
 if st.button("次の問題へ"):
     st.session_state.a = random.randint(1,9)
     st.session_state.b = random.randint(1,9)

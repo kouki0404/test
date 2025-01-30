@@ -85,7 +85,7 @@ else:
     col2.button(f"{str(st.session_state.b)}")
     col3.button(f"{str(st.session_state.c)}")
     col4.button(f"{str(st.session_state.d)}")
-if col1.button(f"一文字消す"):
+if col5.button(f"一文字消す"):
     st.session_state.siki = st.session_state.siki[:-1]
 st.write(f"{st.session_state.siki}={solve}")
 if st.button("次の問題へ"):

@@ -23,22 +23,16 @@ choice = ""
 solve = 0
 if col1.button(str(sisoku[0])):
     st.session_state.siki += str(sisoku[0])
-    choice = str(sisoku[0])
 if col2.button(str(sisoku[1])):
     st.session_state.siki += str(sisoku[1])
-    choice = str(sisoku[1])
 if col3.button(str(sisoku[2])):
     st.session_state.siki += str(sisoku[2])
-    choice = str(sisoku[2])
 if col4.button(str(sisoku[3])):
     st.session_state.siki += str(sisoku[3])
-    choice = str(sisoku[3])
 if col5.button(str(sisoku[4])):
     st.session_state.siki += str(sisoku[4])
-    choice = str(sisoku[4])
 if col6.button(str(sisoku[5])):
     st.session_state.siki += str(sisoku[5])
-    choice = str(sisoku[5])
 if st.session_state.a == st.session_state.b:
     col1.button(f"{str(st.session_state.a)}")
     col2.button(f"{str(st.session_state.b)} ")
@@ -85,7 +79,7 @@ else:
     col2.button(f"{str(st.session_state.b)}")
     col3.button(f"{str(st.session_state.c)}")
     col4.button(f"{str(st.session_state.d)}")
-if col5.button(f"一文字消す"):
+if col5.button(f"削除"):
     st.session_state.siki = st.session_state.siki[:-1]
 st.write(f"{st.session_state.siki}={solve}")
 if st.button("次の問題へ"):
@@ -93,3 +87,4 @@ if st.button("次の問題へ"):
     st.session_state.b = random.randint(1,9)
     st.session_state.c = random.randint(1,9)
     st.session_state.d = random.randint(1,9)
+    st.session_state.siki = ""

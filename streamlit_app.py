@@ -54,10 +54,9 @@ if col6.button(str(sisoku[5])):
     count += 1
 if col1.button(f"{str(st.session_state.a)}"):
     if st.session_state.number_a:
-        st.session_state.siki += str(st.session_state.a)
+        st.session_state.siki += str(f"{st.session_state.a}")
         st.session_state.number_a = False
-        if st.session_state.choice_sisoku == "＋":
-            solve += st.session_state.a
+        keisan.append(st.session_state.a)
     else:
         st.error(f"同じ数字を使うことはできません")
 
@@ -65,8 +64,13 @@ col2.button(f"{str(st.session_state.b)} ")
 col3.button(f"{str(st.session_state.c)}  ")
 col4.button(f"{str(st.session_state.d)}   ")
 if col5.button(f"削除"):
-    st.session_state.siki = st.session_state.siki[:-1]
-    count -= 1
+    if st.session_state.siki != "":
+        last = keisan[-1]
+        if last == st.session_state.a:
+            st.session_state.number_a = True
+            
+        st.session_state.siki = st.session_state.siki[:-1]
+        count -= 1
 if answer != 0:
     if keisan[count-1] == "＋":
         st.session_state.choice_sisoku = "＋"

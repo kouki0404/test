@@ -33,27 +33,15 @@ if col6.button(")"):
 
 st.write("")  # 余白を追加
 
-# 数字ボタン (個別に配置)
+# 数字ボタン (個別に配置) ※ボタン名が重複しないようにする
 col7, col8, col9, col10 = st.columns(4)
-if st.session_state.numbers[0] not in st.session_state.used_numbers:
-    if col7.button(str(st.session_state.numbers[0])):
-        st.session_state.siki += str(st.session_state.numbers[0])
-        st.session_state.used_numbers.add(st.session_state.numbers[0])
+num_cols = [col7, col8, col9, col10]
 
-if st.session_state.numbers[1] not in st.session_state.used_numbers:
-    if col8.button(str(st.session_state.numbers[1])):
-        st.session_state.siki += str(st.session_state.numbers[1])
-        st.session_state.used_numbers.add(st.session_state.numbers[1])
-
-if st.session_state.numbers[2] not in st.session_state.used_numbers:
-    if col9.button(str(st.session_state.numbers[2])):
-        st.session_state.siki += str(st.session_state.numbers[2])
-        st.session_state.used_numbers.add(st.session_state.numbers[2])
-
-if st.session_state.numbers[3] not in st.session_state.used_numbers:
-    if col10.button(str(st.session_state.numbers[3])):
-        st.session_state.siki += str(st.session_state.numbers[3])
-        st.session_state.used_numbers.add(st.session_state.numbers[3])
+for i, num in enumerate(st.session_state.numbers):
+    if num not in st.session_state.used_numbers:  # 未使用の数字のみボタンを押せる
+        if num_cols[i].button(str(num) + " " + str(i)):  # ラベルに空白 + インデックス追加
+            st.session_state.siki += str(num)
+            st.session_state.used_numbers.add(num)  # 使った数字を記録
 
 # 削除ボタン
 if st.button("削除"):

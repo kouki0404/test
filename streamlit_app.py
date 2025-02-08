@@ -3,9 +3,9 @@ import random
 
 st.title("10ゲーム")
 
-# 数字の初期化（重複しないようにする）
+# 数字の初期化（重複OK）
 if 'numbers' not in st.session_state:
-    st.session_state.numbers = random.sample(range(1, 10), 4)
+    st.session_state.numbers = random.choices(range(1, 10), k=4)
 
 if 'siki' not in st.session_state:
     st.session_state.siki = ""
@@ -14,26 +14,46 @@ if 'right' not in st.session_state:
     st.session_state.right = 0
 
 if 'used_numbers' not in st.session_state:
-    st.session_state.used_numbers = set()  # すでに使用した数字を記録
+    st.session_state.used_numbers = set()  # 使用した数字を記録
 
-# 四則演算子
-operators = ["＋", "－", "×", "÷", "(", ")"]
-real_ops = { "＋": "+", "－": "-", "×": "*", "÷": "/" }
+# 四則演算ボタン (個別に配置)
+col1, col2, col3, col4, col5, col6 = st.columns(6)
+if col1.button("＋"):
+    st.session_state.siki += "+"
+if col2.button("－"):
+    st.session_state.siki += "-"
+if col3.button("×"):
+    st.session_state.siki += "*"
+if col4.button("÷"):
+    st.session_state.siki += "/"
+if col5.button("("):
+    st.session_state.siki += "("
+if col6.button(")"):
+    st.session_state.siki += ")"
 
-# ボタン配置
-op_cols = st.columns(len(operators))  # 四則演算ボタンを1行で配置
-for i, op in enumerate(operators):
-    if op_cols[i].button(op):
-        st.session_state.siki += real_ops[op]
+st.write("")  # 余白を追加
 
-st.write("")  # 余白を追加してレイアウトを整理
+# 数字ボタン (個別に配置)
+col7, col8, col9, col10 = st.columns(4)
+if st.session_state.numbers[0] not in st.session_state.used_numbers:
+    if col7.button(str(st.session_state.numbers[0])):
+        st.session_state.siki += str(st.session_state.numbers[0])
+        st.session_state.used_numbers.add(st.session_state.numbers[0])
 
-num_cols = st.columns(4)  # 数字ボタンを1行で配置
-for i, num in enumerate(st.session_state.numbers):
-    if num not in st.session_state.used_numbers:  # 未使用の数字のみボタンを押せる
-        if num_cols[i].button(str(num)):
-            st.session_state.siki += str(num)
-            st.session_state.used_numbers.add(num)  # 使った数字を記録
+if st.session_state.numbers[1] not in st.session_state.used_numbers:
+    if col8.button(str(st.session_state.numbers[1])):
+        st.session_state.siki += str(st.session_state.numbers[1])
+        st.session_state.used_numbers.add(st.session_state.numbers[1])
+
+if st.session_state.numbers[2] not in st.session_state.used_numbers:
+    if col9.button(str(st.session_state.numbers[2])):
+        st.session_state.siki += str(st.session_state.numbers[2])
+        st.session_state.used_numbers.add(st.session_state.numbers[2])
+
+if st.session_state.numbers[3] not in st.session_state.used_numbers:
+    if col10.button(str(st.session_state.numbers[3])):
+        st.session_state.siki += str(st.session_state.numbers[3])
+        st.session_state.used_numbers.add(st.session_state.numbers[3])
 
 # 削除ボタン
 if st.button("削除"):
@@ -57,7 +77,7 @@ st.write(f"{st.session_state.siki} = {result}")
 if st.button("次の問題へ"):
     if result == 10:
         st.session_state.right += 1  # 正解ならスコア加算
-    st.session_state.numbers = random.sample(range(1, 10), 4)
+    st.session_state.numbers = random.choices(range(1, 10), k=4)  # 重複ありの数字生成
     st.session_state.siki = ""
     st.session_state.used_numbers = set()  # 使用済みリストをリセット
 

@@ -34,29 +34,27 @@ if 'number_b' not in st.session_state:
 number_c = 0
 number_d = 0
 if col1.button(str(sisoku[0])):
-    st.session_state.siki += str(sisoku[0])
+    st.session_state.siki += "+"
     count += 1
-    keisan.append("＋")
 if col2.button(str(sisoku[1])):
-    st.session_state.siki += str(sisoku[1])
+    st.session_state.siki += "-"
     count += 1
 if col3.button(str(sisoku[2])):
-    st.session_state.siki += str(sisoku[2])
+    st.session_state.siki += "*"
     count += 1
 if col4.button(str(sisoku[3])):
-    st.session_state.siki += str(sisoku[3])
+    st.session_state.siki += "/"
     count += 1
 if col5.button(str(sisoku[4])):
-    st.session_state.siki += str(sisoku[4])
+    st.session_state.siki += "("
     count += 1
 if col6.button(str(sisoku[5])):
-    st.session_state.siki += str(sisoku[5])
+    st.session_state.siki += ")"
     count += 1
 if col1.button(f"{str(st.session_state.a)}"):
     if st.session_state.number_a:
         st.session_state.siki += str(f"{st.session_state.a}")
         st.session_state.number_a = False
-        keisan.append(st.session_state.a)
     else:
         st.error(f"同じ数字を使うことはできません")
 
@@ -78,9 +76,9 @@ if answer != 0:
         st.session_state.choice_sisoku = "－"
 else:
     answer = 0
-st.write(f"{st.session_state.siki}={solve}")
+st.write(f"{st.session_state.siki}={eval(st.session_state.siki)}")
 if st.button("次の問題へ"):
-    if count >= 7 and solve == 10:
+    if count >= 7 and eval(st.session_state.siki) == 10:
         st.session_state.a = random.randint(1,9)
         st.session_state.b = random.randint(1,9)
         st.session_state.c = random.randint(1,9)

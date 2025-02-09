@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 
-st.title("10ゲーム")
+st.title("テンパズル")
 
 if 'numbers' not in st.session_state:
     st.session_state.numbers = random.choices(range(1, 10), k=4) 

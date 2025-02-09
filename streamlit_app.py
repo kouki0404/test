@@ -26,6 +26,7 @@ with tabs[0]:
     st.write("1,2,3,4の数字を与えらたら")
     st.write("1+2+3+4=10となります")
     st.write("")
+    st.write("回答が10になった場合のみスコアが増えます")
 
 with tabs[1]:
     col1, col2, col3, col4, col5, col6 = st.columns(6)
@@ -76,6 +77,6 @@ with tabs[1]:
         st.session_state.numbers = random.choices(range(1, 10), k=4) 
         st.session_state.siki = ""
         st.session_state.used_numbers = []  
-    st.write("注意  次の問題を遊びたいときは上のボタンを押した後任意のボタンを押してください")
+    st.write("注意:次の問題を遊びたいときは上のボタンを押した後任意のボタンを押してください")
 
     st.subheader(f"スコア: {st.session_state.right}")

@@ -81,3 +81,6 @@ with tabs[1]:
         st.session_state.used_numbers = []
     st.write("注意:次の問題を遊びたいときは上のボタンを押した後”次の問題へ”以外の任意のボタンを押してください")
     st.subheader(f"スコア: {st.session_state.right}")
+st.markdown("""
+    [感想、機能の要望はこちらから](https://forms.office.com/r/GE3hyyGUpv)
+""")

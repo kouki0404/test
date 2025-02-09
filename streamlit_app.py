@@ -49,11 +49,11 @@ with tabs[1]:
     num_cols = [col7, col8, col9, col10]
 
     for i, num in enumerate(st.session_state.numbers):
-        button_label = f"{num} ({i})"  # ボタンの識別のためにインデックスを追加
-        if i not in st.session_state.used_numbers:  # 押されたボタンのみを管理
+        button_label = f"{num} ({i})"  
+        if i not in st.session_state.used_numbers: 
             if num_cols[i].button(button_label):
                 st.session_state.siki += str(num)
-                st.session_state.used_numbers.append(i)  # 押したボタンのインデックスを記録
+                st.session_state.used_numbers.append(i) 
 
     # 削除ボタン
     if st.button("削除"):
@@ -61,12 +61,10 @@ with tabs[1]:
             last_char = st.session_state.siki[-1]
             st.session_state.siki = st.session_state.siki[:-1]
 
-            # 削除したのが数字なら、最後に押されたボタンを復活
             if last_char.isdigit():
                 if st.session_state.used_numbers:
                     st.session_state.used_numbers.pop()
 
-    # 計算結果を表示
     try:
         result = eval(st.session_state.siki) if st.session_state.siki else "?"
     except:
@@ -74,14 +72,12 @@ with tabs[1]:
 
     st.write(f"{st.session_state.siki} = {result}")
 
-    # 次の問題へ（すべての数字ボタンが押され、計算結果が10のときのみスコア加算）
     if st.button("次の問題へ"):
-        if result == 10 and len(st.session_state.used_numbers) == 4:  # 全ての数字ボタンが押されたか確認
-            st.session_state.right += 1  # 正解ならスコア加算
+        if result == 10 and len(st.session_state.used_numbers) == 4: 
+            st.session_state.right += 1
 
-        # 次の問題の準備
-        st.session_state.numbers = random.choices(range(1, 10), k=4)  # 1~9 のみ
+        st.session_state.numbers = random.choices(range(1, 10), k=4)
         st.session_state.siki = ""
-        st.session_state.used_numbers = []  # 使用済みリストをリセット
-    st.write("注意:次の問題を遊びたいときは上のボタンを押した後任意のボタンを押してください")
+        st.session_state.used_numbers = []
+    st.write("注意:次の問題を遊びたいときは上のボタンを押した後”次の問題へ”以外の任意のボタンを押してください")
     st.subheader(f"スコア: {st.session_state.right}")

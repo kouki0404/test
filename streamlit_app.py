@@ -23,8 +23,8 @@ with tabs[0]:
     st.write("")
     st.subheader("やり方")
     st.write("例")
-    st.write("1,2,3,4の数字を与えらたら")
-    st.write("1+2+3+4=10となります")
+    st.write("1,2,3,4の数字を与えられたら")
+    st.write("1+2+3+4で10が作れます")
     st.write("")
     st.write("回答が10になった場合のみスコアが増えます")
 

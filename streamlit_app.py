@@ -19,11 +19,13 @@ with tabs[0]:
     st.subheader("このアプリについて")
     st.write("  このアプリでは4つの数字と四則演算を使って10を作るパズルゲームです")
     st.write("  パソコン、タブレット等の端末で使用することをおすすめします")
+    st.write("数字ボタンについている[0]などはボタンを識別するためなので気にしないでください")
     st.write("")
     st.write("例")
     st.write("1,2,3,4の数字を与えらたら")
     st.write("1+2+3+4=10となります")
     st.write("")
+
 with tabs[1]:
     col1, col2, col3, col4, col5, col6 = st.columns(6)
     if col1.button("＋"):
@@ -73,5 +75,6 @@ with tabs[1]:
         st.session_state.numbers = random.choices(range(1, 10), k=4) 
         st.session_state.siki = ""
         st.session_state.used_numbers = []  
+    st.write("注意  次の問題を遊びたいときは上のボタンを押した後任意のボタンを押してください")
 
     st.subheader(f"スコア: {st.session_state.right}")
